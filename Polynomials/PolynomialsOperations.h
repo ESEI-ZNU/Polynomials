@@ -8,7 +8,7 @@ private:
 	double* PolyArr;
 	int ArrSize;
 public:
-	//Конструктор
+	//Constructor
 	Polynomials()
 	{
 		int i;
@@ -29,12 +29,12 @@ public:
 			cin >> PolyArr[i];
 		}
 	}
-	//Деструктор
+	//Destructor
 	~Polynomials()
 	{
 		delete[] PolyArr;
 	}
-	//Констркутор копирования
+	//Copy constructor
 	Polynomials(const Polynomials& copy)
 	{
 		int i;
@@ -46,7 +46,7 @@ public:
 	}
 	//----------------------------------------------------------------
 	
-	//Функция вычисление значения полинома для определенного аргумента
+	//Function calculating the value of a polynomial for a specific argument
 	double ArgumentCalculus()
 	{
 		int i;
@@ -59,21 +59,21 @@ public:
 
 		cout << endl;
 
-		//Верхняя часть таблици
+		//Top part of spreadsheet
 		for (i = 0; i < ArrSize; i++)
 		{
 			cout << "+-------";
 		}
 		cout << "+" << endl;
 
-		//Вывод исходных данных
+		//Output of initial data
 		for (i = 0; i < ArrSize; i++)
 		{
 			cout << "| " << PolyArr[i] << "\t";
 		}
 		cout << "|" << endl;
 
-		//Промежуточная часть таблици
+		//Mid part of spreadsheet
 		for (i = 0; i < ArrSize; i++)
 		{
 			cout << "+-------";
@@ -82,7 +82,7 @@ public:
 
 		b[0] = PolyArr[0];
 		cout << "| " << b[0] << "\t";
-		//Расчёт и запись в таблицу
+		//Calculation and writing to the spreadsheet
 		for (i = 1; i < ArrSize; i++)
 		{
 			b[i] = (b[i - 1] * eps) + PolyArr[i];
@@ -90,7 +90,7 @@ public:
 		}
 		cout << "|" << endl;
 
-		//Нижняя часть таблици
+		//Botom part of spreadsheet
 		for (i = 0; i < ArrSize; i++)
 		{
 			cout << "+-------";
