@@ -1,8 +1,10 @@
 #include <iostream>
+#include "PolynomialsOperations.h"
 using namespace std;
 
 int main()
 {
-	cout << "Hello, world";
+	Polynomials mnogochlen;
+	mnogochlen.ArgumentCalculus();
 	return 0;
 }
