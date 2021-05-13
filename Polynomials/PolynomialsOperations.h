@@ -104,4 +104,6 @@ public:
 		delete[]b;
 		return result;
 	}
+	//Add PolyDiv()
+	//Add PolyRemainder()
 };
