@@ -7,6 +7,7 @@ class Polynomials
 private:
 	double* PolyArr;
 	int ArrSize;
+	//int current_size = ArrSize;
 public:
 	//Constructor
 	Polynomials()
@@ -104,6 +105,44 @@ public:
 		delete[]b;
 		return result;
 	}
-	//Add PolyDiv()
+	void PolyDiv() {
+		/*
+		ƒл€ нахождени€ частного и остатка от делени€ полиномов нам нужно 2 обьекта полиномов. ¬ начале функции мы должны проверить 
+		максимальную степень числител€(она должна быть больше либо равна степени знаменател€).  ƒалее мы делим ведущие члены 
+		полиномов и записываем результат в структуре: степень и коэфициент. ”множаем полученный результат на все члены
+		знаменател€. –езультат умножени€ умножаем на -1 и прибавл€ем к числителю почленно слагаемые с одинаковыми степен€ми. 
+		  полиному результата приписываем оставшиес€ члены числител€. 
+		ѕовтор€ем шаги, пока ведуща€ степень числител€ больше или равна степени ведущего члена знаменател€.
+		*/
+		//—оздаем полиномы дл€ числител€ и знаменател€:
+		// Polynom a, b, result;
+		// int a_size, b_size;
+		// cout << "Enter size of the first polynom\t";
+		// cin >> a_size;
+		// cout << "Enter size of the second polynom\t";
+		// cin >> b_size;
+		// ≈сли максимальна€ степень числител€ меньше, чем максимальна€ степень знаменател€, то смысла продолжать программу делени€ нету! 
+		// if(a < b) cout << "We can`t continue program!";
+		// else {
+		//a.Generate(a_size);
+		//b.Generate(b_size);
+		//result.Generate(20);
+		// int i = 0, j = 0;
+		// 
+		// while (a.current_size >= b.current_size){ // ¬ыполн€етс€, пока текуща€ максимальна€ степень числител€ больше-равно максимальной степени знаменател€
+		//result.PolyArr[i] = a.PolyArr[a_size - i] - b.PolyArr[b_size - i];
+		//result.ArrSize[i] = a.ArrSize[a_size -1] - b.ArrSize[b_size - i];
+		//current_size--;
+		// while(/*не конец массива*/) {
+		// temp.PolyArr[current_size -j] = result.PolyArr[i] * b.PolyArr[b_size-j];
+		// temp.ArrSize[current_size] = result.ArrSize[i] * b.ArrSize[b_size-j];
+		// j++;
+		// }
+		// //«десь нужно умножить все коэфициенты полинома temp на -1, а далее прибавить temp к текущему значению знаменател€
+		// //ј далее повторить предыдущие операции
+		// 
+		//
+
+	}
 	//Add PolyRemainder()
 };
