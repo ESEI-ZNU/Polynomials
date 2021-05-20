@@ -7,7 +7,7 @@ class Polynomials
 private:
 	double* PolyArr;
 	int ArrSize;
-	//int current_size = ArrSize;
+	int cSize;
 public:
 	//Constructor
 	Polynomials()
@@ -29,6 +29,7 @@ public:
 			cout << "Enter " << i + 1 << " element: ";
 			cin >> PolyArr[i];
 		}
+		cSize = ArrSize;
 	}
 	//Destructor
 	~Polynomials()
@@ -105,44 +106,74 @@ public:
 		delete[]b;
 		return result;
 	}
+
 	void PolyDiv() {
 		/*
-		ƒл€ нахождени€ частного и остатка от делени€ полиномов нам нужно 2 обьекта полиномов. ¬ начале функции мы должны проверить 
-		максимальную степень числител€(она должна быть больше либо равна степени знаменател€).  ƒалее мы делим ведущие члены 
-		полиномов и записываем результат в структуре: степень и коэфициент. ”множаем полученный результат на все члены
-		знаменател€. –езультат умножени€ умножаем на -1 и прибавл€ем к числителю почленно слагаемые с одинаковыми степен€ми. 
-		  полиному результата приписываем оставшиес€ члены числител€. 
-		ѕовтор€ем шаги, пока ведуща€ степень числител€ больше или равна степени ведущего члена знаменател€.
+To find the quotient and remainder of the division of polynomials, we need 2 polynomial objects. At the beginning of the function, we must check
+the maximum degree of the numerator (it must be greater than or equal to the degree of the denominator). Next, we divide the leading members
+polynomials and write the result in the structure: degree and coefficient. We multiply the result by all terms
+denominator. We multiply the result of multiplication by -1 and add term-by-term terms with the same degrees to the numerator.
+We assign the remaining members of the numerator to the polynomial of the result.
+Repeat the steps until the leading power of the numerator is greater than or equal to the power of the leading term of the denominator.
 		*/
-		//—оздаем полиномы дл€ числител€ и знаменател€:
-		// Polynom a, b, result;
-		// int a_size, b_size;
-		// cout << "Enter size of the first polynom\t";
-		// cin >> a_size;
-		// cout << "Enter size of the second polynom\t";
-		// cin >> b_size;
-		// ≈сли максимальна€ степень числител€ меньше, чем максимальна€ степень знаменател€, то смысла продолжать программу делени€ нету! 
-		// if(a < b) cout << "We can`t continue program!";
-		// else {
-		//a.Generate(a_size);
-		//b.Generate(b_size);
-		//result.Generate(20);
-		// int i = 0, j = 0;
-		// 
-		// while (a.current_size >= b.current_size){ // ¬ыполн€етс€, пока текуща€ максимальна€ степень числител€ больше-равно максимальной степени знаменател€
-		//result.PolyArr[i] = a.PolyArr[a_size - i] - b.PolyArr[b_size - i];
-		//result.ArrSize[i] = a.ArrSize[a_size -1] - b.ArrSize[b_size - i];
-		//current_size--;
-		// while(/*не конец массива*/) {
-		// temp.PolyArr[current_size -j] = result.PolyArr[i] * b.PolyArr[b_size-j];
-		// temp.ArrSize[current_size] = result.ArrSize[i] * b.ArrSize[b_size-j];
-		// j++;
-		// }
-		// //«десь нужно умножить все коэфициенты полинома temp на -1, а далее прибавить temp к текущему значению знаменател€
-		// //ј далее повторить предыдущие операции
-		// 
-		//
+		//Creating nominator and denominator polynoms 
+		Polynom a, b;
+		int a_size, b_size;
+			cout << "Enter size of the first polynom\t";
+				cin >> a_size;
+			cout << "Enter size of the second polynom\t";
+				cin >> b_size;
 
+
+		//IF maxdegree of a is less then we wil end this func  
+		if(a < b) cout << "We can`t continue program!";
+		else {
+			a.ArrSize = a_size;
+			b.ArrSize = b_size;
+
+
+			int resDegree = new int[100];
+			int maxElemID = 0;//id of max elem for result 
+			double resKf = new double[100];
+
+
+			int tempDegree = new int[100];
+			int tempMaxElemID = 0;//id of max elem for result 
+			double tempKf = new double[100];
+
+			a.cSize = a.ArrSize;
+			b.cSize = b.ArrSize;
+
+			int i = 0, j = 0;
+
+			while (a.cSize >= b.cSize) { // Continuing while a degree is bigger or equal with b degree
+				resKf[maxElemID] = tempKf[a.cSize] - b.PolyArr[b.cSize];
+				resDegree[maxElemID] = tempDegree[a.cSize] - b.ArrSize[b.cSize];
+				a.cSize--;
+				while (j <= b_size) {
+					tempKf[j] = resKf[i] * b.PolyArr[b_size - j];
+					tempDegree [j] = resDegree[i] * b.ArrSize[b_size - j];
+					j++;
+				}
+				//Then we have to repeat previous operations
+				while (i <= j) {//Multiplying tempKf[i] by -1
+					tempKf[i] *= -1;
+					i++;
+				}
+				i = 0;
+				while (i <= j) {
+					tempMaxElemID = j;
+					if (a.cSize - i = tempDegree[j]) {
+						tempKf[i] = tempKf[i] + a.PolyArr[a.cSize - i];
+						i++;
+					}
+					else {
+						break;
+					}
+				}
+				maxElemID++;
+			}
+		}
 	}
 	//Add PolyRemainder()
 };
