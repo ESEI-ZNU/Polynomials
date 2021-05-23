@@ -107,6 +107,19 @@ public:
 		return result;
 	}
 
+	void copyFromTempToPoly(int *tempKf, int tempMaxElemID, int *tempDegree, Polynomials & copyTo) {
+		copyTo.ArrSize = copyTo.cSize = tempDegree[tempMaxElemID];
+		for (int i = 0; i <= tempMaxElemID; i++) {
+			copyTo.PolyArr[i] = tempKf[i];//copying koeficients to another object
+		}
+	}
+	void copyPoly(Polynomials& copy_from, Polynomials& copy_to) {
+		copy_to.ArrSize = copy_to.cSize = copy_from.cSize;
+		for (int i = 0; i <= copy_from.cSize; i++) {
+			copy_to.PolyArr[i] = copy_from.PolyArr[i];
+		}
+	}
+
 	void PolyDiv() {
 		/*
 To find the quotient and remainder of the division of polynomials, we need 2 polynomial objects. At the beginning of the function, we must check
@@ -117,29 +130,30 @@ We assign the remaining members of the numerator to the polynomial of the result
 Repeat the steps until the leading power of the numerator is greater than or equal to the power of the leading term of the denominator.
 		*/
 		//Creating nominator and denominator polynoms 
-		Polynom a, b;
+		Polynomials a, b, printPolynom;
 		int a_size, b_size;
 			cout << "Enter size of the first polynom\t";
 				cin >> a_size;
 			cout << "Enter size of the second polynom\t";
 				cin >> b_size;
 
+		copyPoly(a, printPolynom);
 
-		//IF maxdegree of a is less then we wil end this func  
-		if(a < b) cout << "We can`t continue program!";
+		//IF maxdegree of a is less then we will end this func  
+		if(a_size < b_size) cout << "We can`t continue program!";
 		else {
 			a.ArrSize = a_size;
 			b.ArrSize = b_size;
 
 
-			int resDegree = new int[100];
+			int *resDegree = new int[100];
 			int maxElemID = 0;//id of max elem for result 
-			double resKf = new double[100];
+			int* resKf = new int[100];
 
 
-			int tempDegree = new int[100];
+			int* tempDegree = new int[100];
 			int tempMaxElemID = 0;//id of max elem for result 
-			double tempKf = new double[100];
+			int* tempKf = new int[100];
 
 			a.cSize = a.ArrSize;
 			b.cSize = b.ArrSize;
@@ -147,12 +161,12 @@ Repeat the steps until the leading power of the numerator is greater than or equ
 			int i = 0, j = 0;
 
 			while (a.cSize >= b.cSize) { // Continuing while a degree is bigger or equal with b degree
-				resKf[maxElemID] = tempKf[a.cSize] - b.PolyArr[b.cSize];
-				resDegree[maxElemID] = tempDegree[a.cSize] - b.ArrSize[b.cSize];
+				resKf[maxElemID] = a.PolyArr[a.cSize] - b.PolyArr[b.cSize];
+				resDegree[maxElemID] = a.cSize - b.cSize;
 				a.cSize--;
 				while (j <= b_size) {
 					tempKf[j] = resKf[i] * b.PolyArr[b_size - j];
-					tempDegree [j] = resDegree[i] * b.ArrSize[b_size - j];
+					tempDegree [j] = resDegree[i] * (b_size - j);
 					j++;
 				}
 				//Then we have to repeat previous operations
@@ -163,7 +177,7 @@ Repeat the steps until the leading power of the numerator is greater than or equ
 				i = 0;
 				while (i <= j) {
 					tempMaxElemID = j;
-					if (a.cSize - i = tempDegree[j]) {
+					if (a.cSize - i == tempDegree[tempMaxElemID]) {
 						tempKf[i] = tempKf[i] + a.PolyArr[a.cSize - i];
 						i++;
 					}
@@ -172,7 +186,20 @@ Repeat the steps until the leading power of the numerator is greater than or equ
 					}
 				}
 				maxElemID++;
+				copyFromTempToPoly(tempKf, tempMaxElemID, tempDegree, a);
 			}
+		}
+		int iter = 0;
+		//Printing result of the division
+		while (iter <= maxElemID) {//Printing the result
+			cout << resKf[iter] << "x^" << resDegree[iter] << " + ";
+		}
+		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+
+		int tepmIter = 0;
+		//Printing remainder of the division
+		while (tempMaxElemID >= tempIter) {
+			cout << tempKf[tempIter] << "x^" << tempDegree[iter] << " + ";
 		}
 	}
 	//Add PolyRemainder()
