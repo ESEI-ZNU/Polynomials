@@ -125,6 +125,13 @@ int main() {
             Printp(result, deg1 - monomialDegree);
         }
         break;
+          case 8:
+        int x;
+        cout << "Введіть значення аргументу: ";
+        cin >> x;
+        cout << "Значення полінома при x = " << x << " : " << DilOD(poly1, deg1, x) << endl;
+        break;
+    }
 
     delete[] poly1;
     delete[] poly2;
