@@ -78,3 +78,14 @@ int DilOD(int* poly, int deg, int x) {
 
     return result;
 }
+
+// Функція для обчислення значення полінома з певним аргументом
+int* ArgPol(int* poly, int deg, int monomialCoeff, int monomialDegree) {
+    int* result = new int[deg - monomialDegree + 1];
+
+    for (int i = 0; i <= deg - monomialDegree; ++i) {
+        result[i] = poly[i + monomialDegree] / monomialCoeff;
+    }
+
+    return result;
+}
