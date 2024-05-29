@@ -30,3 +30,51 @@ int* MultiplyOD(int* poly, int deg, int monomialCoeff, int monomialDegree) {
 
     return result;
 }
+
+// Функція для ділення поліномів
+int* Dil(int* poly1, int* poly2, int deg1, int deg2) {
+    int* result = new int[deg1 - deg2 + 1];
+    int* tempPoly = new int[deg1 + 1];
+
+    for (int i = 0; i <= deg1; ++i) {
+        tempPoly[i] = poly1[i];
+    }
+
+    for (int i = deg1 - deg2; i >= 0; --i) {
+        int coeff = tempPoly[deg1] / poly2[deg2];
+        result[i] = coeff;
+
+        for (int j = 0; j <= deg2; ++j) {
+            tempPoly[i + j] -= coeff * poly2[j];
+        }
+        deg1--;
+    }
+
+    delete[] tempPoly;
+    return result;
+}
+
+// Функція для знаходження залишку від ділення поліномів
+int* Surplus(int* poly1, int* poly2, int deg1, int deg2) {
+    int* quotient = Dil(poly1, poly2, deg1, deg2);
+    int* product = Multiply(quotient, poly2, deg1 - deg2, deg2);
+
+    int* result = new int[deg1 + 1];
+    for (int i = 0; i <= deg1; ++i) {
+        result[i] = poly1[i] - product[i];
+    }
+
+    delete[] quotient;
+    delete[] product;
+    return result;
+}
+// Функція для ділення полінома на одночлен
+int DilOD(int* poly, int deg, int x) {
+    int result = poly[deg];
+
+    for (int i = deg - 1; i >= 0; --i) {
+        result = result * x + poly[i];
+    }
+
+    return result;
+}
