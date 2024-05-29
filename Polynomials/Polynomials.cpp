@@ -79,6 +79,28 @@ int main() {
         cout << "Результат множення: ";
         Printp(result, deg1 + deg2);
         break;
+    case 4:
+        if (deg1 < deg2) {
+            cout << "Степінь першого полінома має бути більше або рівна степені другого полінома для ділення." << endl;
+        }
+        else {
+            result = Dil(poly1, poly2, deg1, deg2);
+            cout << "Результат ділення: ";
+            Printp(result, deg1 - deg2);
+        }
+        break;
+    case 5:
+        if (deg1 < deg2) {
+            cout << "Степінь першого полінома має бути більше або рівна степені другого полінома для знаходження залишку." << endl;
+        }
+        else {
+            result = Surplus(poly1, poly2, deg1, deg2);
+            cout << "Залишок від ділення: ";
+            Printp(result, deg1);
+        }
+        break;
+    default:
+        cout << "Невірний вибір операції." << endl;
     case 6:
         int monomialCoeff, monomialDegree;
         cout << "Введіть коефіцієнт одночлена: ";
@@ -88,6 +110,20 @@ int main() {
         result = MultiplyOD(poly1, deg1, monomialCoeff, monomialDegree);
         cout << "Результат множення полінома на одночлен: ";
         Printp(result, deg1 + monomialDegree);
+        break;
+    case 7:
+        cout << "Введіть коефіцієнт одночлена: ";
+        cin >> monomialCoeff;
+        cout << "Введіть степінь одночлена: ";
+        cin >> monomialDegree;
+        if (deg1 < monomialDegree) {
+            cout << "Степінь полінома має бути більше або рівна степені одночлена для ділення." << endl;
+        }
+        else {
+            result = ArgPol(poly1, deg1, monomialCoeff, monomialDegree);
+            cout << "Результат ділення полінома на одночлен: ";
+            Printp(result, deg1 - monomialDegree);
+        }
         break;
 
     delete[] poly1;
