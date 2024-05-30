@@ -74,6 +74,16 @@ int main() {
 
     switch (action) {
 
+ case 1:
+        result = Plus(poly1, poly2, deg1, deg2);
+        cout << "Результат додавання: ";
+        Printp(result, max(deg1, deg2));
+        break;
+    case 2:
+        result = Minus(poly1, poly2, deg1, deg2);
+        cout << "Результат віднімання: ";
+        Printp(result, max(deg1, deg2));
+        break;   
     case 3:
         result = Multiply(poly1, poly2, deg1, deg2);
         cout << "Результат множення: ";
