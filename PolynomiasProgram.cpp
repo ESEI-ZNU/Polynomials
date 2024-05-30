@@ -1,5 +1,33 @@
 #include "PolynomialsFunc.h"
 
+// Функція для додавання поліномів
+int* Plus(int* poly1, int* poly2, int deg1, int deg2) {
+    int maxDeg = max(deg1, deg2);
+    int* result = new int[maxDeg + 1];
+
+    for (int i = 0; i <= maxDeg; ++i) {
+        int term1 = (i <= deg1) ? poly1[i] : 0;
+        int term2 = (i <= deg2) ? poly2[i] : 0;
+        result[i] = term1 + term2;
+    }
+
+    return result;
+}
+
+// Функція для віднімання поліномів
+int* Minus(int* poly1, int* poly2, int deg1, int deg2) {
+    int maxDeg = max(deg1, deg2);
+    int* result = new int[maxDeg + 1];
+
+    for (int i = 0; i <= maxDeg; ++i) {
+        int term1 = (i <= deg1) ? poly1[i] : 0;
+        int term2 = (i <= deg2) ? poly2[i] : 0;
+        result[i] = term1 - term2;
+    }
+
+    return result;
+}
+
 // Функція для множення поліномів
 int* Multiply(int* poly1, int* poly2, int deg1, int deg2) {
     int* result = new int[deg1 + deg2 + 1];
