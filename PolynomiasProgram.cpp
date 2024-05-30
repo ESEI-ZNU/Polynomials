@@ -1,5 +1,6 @@
 #include "PolynomialsFunc.h"
-
+#include <algorithm>
+using namespace std;
 // Функція для додавання поліномів
 int* Plus(int* poly1, int* poly2, int deg1, int deg2) {
     int maxDeg = max(deg1, deg2);
