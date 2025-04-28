@@ -17,7 +17,7 @@ public class Polynoma {
         }
         return result;
     }
-    //Код далі
+
     //Для виведення поліному як рядок
     public String toString(){
         StringBuilder sb = new StringBuilder();

@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello, World!");
-        //System.out.println("Введіть число");
 
         Scanner inputNoun = new Scanner(System.in);
 
@@ -16,7 +15,7 @@ public class Main {
         System.out.print("Введіть значення х - ");
         double x = inputNoun.nextDouble();
 
-        //код далі
+
         double result = polynom.solving(x);
         System.out.println("Значення полінома, коли х = " + x + " Буде - " + result);
     }
