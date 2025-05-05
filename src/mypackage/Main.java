@@ -30,7 +30,7 @@ public class Main {
         double x = inputNoun.nextDouble(); // Запит на введення
 
         double result = polynom.solving(x); //Бере введене число х, та обраховує його з виразом.
-        System.out.println("Значення полінома, коли х = " + x + " Буде - " + result);
+        System.out.println("Значення полінома, коли х = " + x + " Буде  - " + result);
     }
 }
 

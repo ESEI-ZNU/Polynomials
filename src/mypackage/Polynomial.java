@@ -1,14 +1,22 @@
 package mypackage;
 
 public class Polynomial {
-    private final int[] degrees; //Ступінь
-    private final double[] coefficients; //Коефіцієнти
+    private int[] degrees; //Ступінь
+    private double[] coefficients; //Коефіцієнти
+
+    public Polynomial(double[] coefficients) {
+    }
 
     //Конструктор для ініціалізації об'єкта з корректними даними, зберігає коефіцієнти. Викликається один раз.
 
-    public Polynoma(double[] coefficients, int[] degrees) {
+    public void Polynoma(double[] coefficients, int[] degrees) {
         this.coefficients = coefficients;
         this.degrees = degrees;
+    }
+
+    public Polynomial(int[] degrees, double[] coefficients) {
+        this.degrees = degrees;
+        this.coefficients = coefficients;
     }
 
     //Для обчислення полінома
