@@ -23,7 +23,7 @@ public class Main {
             degrees[i] = inputNoun.nextInt();
         }
 
-        Polynomial polynom = new Polynomial(coefficients, degrees); //Створення об'єкту класу з конструктором
+        Polynomial polynom = new Polynomial(coefficients); //Створення об'єкту класу з конструктором
         System.out.println("Поліном " + polynom);
 
         System.out.print("Введіть значення х - ");
