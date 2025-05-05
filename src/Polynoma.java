@@ -1,51 +1,52 @@
 public class Polynoma {
 
-    private final int degree; //Ступінь полінома
-    private final double[] coefficients; // Масив коефіцієнтів
+    private final int[] degrees; //Ступінь
+    private final double[] coefficients; //Коефіцієнти
 
+    //Конструктор для ініціалізації об'єкта з корректними даними, зберігає коефіцієнти. Викликається один раз.
 
-    public Polynoma(double[] coefficients) {
-        this.degree = coefficients.length - 1;// бо ступінь = n - 1
+    public Polynoma(double[] coefficients, int[] degrees) {
         this.coefficients = coefficients;
+        this.degrees = degrees;
     }
 
+    //Для обчислення полінома
     public double solving(double x) {
         double result = 0;
-        int i;
-        for (i = 0; i <= degree; i++) {
-            result = result + coefficients[i] * Math.pow(x, degree - i); //Math pow ставить до степеня
+        for (int i = 0; i < coefficients.length; i++) {
+            result += coefficients[i] * Math.pow(x, degrees[i]);
         }
         return result;
     }
 
     //Для виведення поліному як рядок
-    public String toString(){
+    public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i <= degree; i++) {
+        for (int i = 0; i < coefficients.length; i++) {
             double coef = coefficients[i];
-            int stupin = degree - i;
+            int deg = degrees[i];
 
             if (coef == 0) continue;
 
-            if (!sb.isEmpty() && coef > 0) {
-                sb.append(" + ");
+            if (sb.length() > 0) {
+                sb.append(coef > 0 ? " + " : " - ");
             } else if (coef < 0) {
-                sb.append(" - ");
-                coef = - coef;
+                sb.append("-");
             }
 
-            if (coef != 1 || stupin == 0) {
+            coef = Math.abs(coef);
+
+            if (coef != 1 || deg == 0) {
                 sb.append(coef);
             }
 
-            if (stupin > 0) {
+            if (deg > 0) {
                 sb.append("x");
-                if (stupin > 1) {
-                    sb.append("^").append(stupin);
+                if (deg > 1) {
+                    sb.append("^").append(deg);
                 }
             }
         }
         return sb.toString();
     }
-
 }
