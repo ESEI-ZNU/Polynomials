@@ -4,33 +4,33 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+        Scanner inputNoun = new Scanner(System.in);
 
-        Scanner inputNoun = new Scanner(System.in); // Для вводу значення через консоль, використаємо
-        //inputNoun - Назва
+        // Введення ступеня полінома
+        System.out.print("Введіть ступінь полінома: ");
+        int degree = inputNoun.nextInt();
 
-        System.out.println("Введіть кількість членів поліному: ");
-        int numberOf = inputNoun.nextInt();
+        // масив коефіцієнтів довжини degree+1
+        int[] coefficients = new int[degree + 1];
 
-        // Створення массиву на numberOf елементів
-        double[] coefficients = new double[numberOf];
-        int[] degrees = new int[numberOf];
-
-        for (int i = 0; i < numberOf; i++) {
-            System.out.println("Введіть коефіцієнт для члена #" + (i + 1) + ":");
-            coefficients[i] = inputNoun.nextDouble();
-            System.out.println("Введіть ступінь для члена #" + (i + 1) + ":");
-            degrees[i] = inputNoun.nextInt();
+        // Зчитуємо всі коефіцієнти
+        for (int i = 0; i <= degree; i++) {
+            System.out.print("Коефіцієнт при x^" + i + ": ");
+            coefficients[i] = inputNoun.nextInt();
         }
 
-        Polynomial polynom = new Polynomial(coefficients); //Створення об'єкту класу з конструктором
-        System.out.println("Поліном " + polynom);
+        // об'єкт полінома
+        Polynomial polynom = new Polynomial(coefficients);
 
-        System.out.print("Введіть значення х - ");
-        double x = inputNoun.nextDouble(); // Запит на введення
+        // Виводимо поліном у вигляді рядка
+        System.out.println("Ваш поліном: " + polynom);
 
-        double result = polynom.solving(x); //Бере введене число х, та обраховує його з виразом.
-        System.out.println("Значення полінома, коли х = " + x + " Буде  - " + result);
+        // Зчитуємо значення x і обчислюємо
+        System.out.print("Введіть значення x: ");
+        int x = inputNoun.nextInt();
+        int result = polynom.solving(x);
+
+        // результат
+        System.out.println("Результат: " + result);
     }
 }
-

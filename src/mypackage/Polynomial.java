@@ -1,40 +1,27 @@
 package mypackage;
 
 public class Polynomial {
-    private int[] degrees; //Ступінь
-    private double[] coefficients; //Коефіцієнти
+    private final int[] coefficients; // Масив коефіцієнтів, індекс — ступінь
 
-    public Polynomial(double[] coefficients) {
-    }
-
-    //Конструктор для ініціалізації об'єкта з корректними даними, зберігає коефіцієнти. Викликається один раз.
-
-    public void Polynoma(double[] coefficients, int[] degrees) {
-        this.coefficients = coefficients;
-        this.degrees = degrees;
-    }
-
-    public Polynomial(int[] degrees, double[] coefficients) {
-        this.degrees = degrees;
+    // Конструктор
+    public Polynomial(int[] coefficients) {
         this.coefficients = coefficients;
     }
 
-    //Для обчислення полінома
-    public double solving(double x) {
-        double result = 0;
+    // Обчислення значення полінома
+    public int solving(int x) {
+        int result = 0;
         for (int i = 0; i < coefficients.length; i++) {
-            result += coefficients[i] * Math.pow(x, degrees[i]);
+            result += coefficients[i] * (int)Math.pow(x, i);
         }
         return result;
     }
 
-    //Для виведення поліному як рядок
+    // Вивід полінома як рядок
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < coefficients.length; i++) {
-            double coef = coefficients[i];
-            int deg = degrees[i];
-
+        for (int i = coefficients.length - 1; i >= 0; i--) {
+            int coef = coefficients[i];
             if (coef == 0) continue;
 
             if (sb.length() > 0) {
@@ -43,16 +30,15 @@ public class Polynomial {
                 sb.append("-");
             }
 
-            coef = Math.abs(coef);
-
-            if (coef != 1 || deg == 0) {
-                sb.append(coef);
+            int absCoef = Math.abs(coef);
+            if (absCoef != 1 || i == 0) {
+                sb.append(absCoef);
             }
 
-            if (deg > 0) {
+            if (i > 0) {
                 sb.append("x");
-                if (deg > 1) {
-                    sb.append("^").append(deg);
+                if (i > 1) {
+                    sb.append("^").append(i);
                 }
             }
         }
