@@ -14,13 +14,14 @@ public class Polynomial {
 
     /**
      * Конструктор
+     * @param coefficients - Масив коефіцієнтів полінома, де індекс — це степінь, а значення — коефіцієнт
      */
     public Polynomial(int[] coefficients) {
         this.coefficients = coefficients;
     }
 
     /**
-     * @param x - довільне значення користувача
+     * @param x - Довільне значення користувача
      */
     public int solving(int x) {
         int result = 0;

@@ -1,17 +1,18 @@
 package mypackage;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 /**
  * Головний клас програми.
+ * @author Роботягов Кирило
+ * @version 1.0
  */
 public class Main {
 
     /**
      * Головний метод програми.
      *
-     * @param args аргументи командного рядка
+     * @param args Аргументи командного рядка
      */
     public static void main(String[] args) {
         Scanner inputNoun = new Scanner(System.in);
@@ -21,7 +22,7 @@ public class Main {
             int degree = inputNoun.nextInt();
 
             /**
-             * масив коефіцієнтів довжини degree+1
+             * Масив коефіцієнтів довжини degree+1
              */
             int[] coefficients = new int[degree + 1];
 
@@ -34,7 +35,7 @@ public class Main {
             }
 
             /**
-             * об'єкт полінома
+             * Об'єкт полінома
              */
             Polynomial polynom = new Polynomial(coefficients);
 
@@ -44,7 +45,7 @@ public class Main {
             System.out.println("Ваш поліном: " + polynom);
 
             /**
-             * Вибыр операції
+             * Вибір операції
              */
             System.out.println("Виберіть операцію над поліномом/поліномами:");
             System.out.println("0 - Розрахунок значення поліному");
@@ -54,7 +55,7 @@ public class Main {
             System.out.println("інакше - Вихід");
 
             /**
-             * зчитуємо вибір
+             * Зчитуємо вибір
              */
             int operation = inputNoun.nextInt();
 
@@ -67,7 +68,7 @@ public class Main {
                     int x = inputNoun.nextInt();
                     int result = polynom.solving(x);
                     /**
-                     * результат
+                     * Результат
                      */
                     System.out.println("Результат: " + result);
                 }
