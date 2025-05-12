@@ -2,7 +2,16 @@ package mypackage;
 
 import java.util.Scanner;
 
+/**
+ * Головний клас програми.
+ */
 public class Main {
+
+    /**
+     * Головний метод програми.
+     *
+     * @param args аргументи командного рядка
+     */
     public static void main(String[] args) {
         Scanner inputNoun = new Scanner(System.in);
 

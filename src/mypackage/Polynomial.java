@@ -1,7 +1,16 @@
 package mypackage;
 
+/**
+ * Клас для роботи з поліномами.
+ *
+ * @author Роботягов Кирило
+ * @version 1.0
+ */
 public class Polynomial {
-    private final int[] coefficients; // Масив коефіцієнтів, індекс — ступінь
+    /**
+     * Масив коефіцієнтів, індекс — ступінь.
+     */
+    private final int[] coefficients;
 
     // Конструктор
     public Polynomial(int[] coefficients) {
