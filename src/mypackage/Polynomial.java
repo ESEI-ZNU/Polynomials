@@ -12,12 +12,16 @@ public class Polynomial {
      */
     private final int[] coefficients;
 
-    // Конструктор
+    /**
+     * Конструктор
+     */
     public Polynomial(int[] coefficients) {
         this.coefficients = coefficients;
     }
 
-    // Обчислення значення полінома
+    /**
+     * @param x - довільне значення користувача
+     */
     public int solving(int x) {
         int result = 0;
         for (int i = 0; i < coefficients.length; i++) {
@@ -26,7 +30,9 @@ public class Polynomial {
         return result;
     }
 
-    // Вивід полінома як рядок
+    /**
+     * Вивід полінома як рядок
+     */
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (int i = coefficients.length - 1; i >= 0; i--) {
