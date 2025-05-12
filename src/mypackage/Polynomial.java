@@ -21,8 +21,11 @@ public class Polynomial {
     }
 
     /**
-     * @param x - Довільне значення користувача
+     * Розрахунок значення поліному
+     *  @param x - Довільне значення користувача
+     * @return - Значення поліному
      */
+
     public int solving(int x) {
         int result = 0;
         for (int i = 0; i < coefficients.length; i++) {
