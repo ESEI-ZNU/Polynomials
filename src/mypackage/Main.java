@@ -111,9 +111,39 @@ public class Main {
 
                     System.out.println("Результат віднімання: " + difference);
                 }
+                case 3 -> {
+                    // Розробник 2 — Множення полінома на одночлен
+                    System.out.print("Введіть коефіцієнт одночлена: ");
+                    int monoCoef = inputNoun.nextInt();
+                    System.out.print("Введіть степінь одночлена: ");
+                    int monoExp = inputNoun.nextInt();
 
+                    Term monomial = new Term(monoCoef, monoExp);
+                    Polynomial multiplied = polynom.multiplyByMonomial(monomial);
 
+                    System.out.println("Результат множення на одночлен: " + multiplied);
+                }
+                case 4 -> {
+                    // Розробник 2 — Множення двох поліномів
 
+                    // Введення другого полінома
+                    System.out.print("Введіть ступінь другого полінома: ");
+                    int degree2 = inputNoun.nextInt();
+                    int[] coefficients2 = new int[degree2 + 1];
+
+                    for (int i = 0; i <= degree2; i++) {
+                        System.out.print("Коефіцієнт при x^" + i + ": ");
+                        coefficients2[i] = inputNoun.nextInt();
+                    }
+
+                    Polynomial secondPolynom = new Polynomial(coefficients2);
+
+                    // Множення
+                    Polynomial result = polynom.multiply(secondPolynom);
+
+                    // Вивід результату
+                    System.out.println("Результат множення двох поліномів: " + result);
+                }
             }
         }
     }
