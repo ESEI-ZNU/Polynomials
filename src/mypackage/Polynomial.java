@@ -4,7 +4,8 @@ package mypackage;
  * Клас для роботи з поліномами.
  *
  * @author Роботягов Кирило
- * @version 1.0
+ * @author Мелещенко Анжеліка
+ * @version 1.1
  */
 public class Polynomial {
     /**
@@ -19,6 +20,8 @@ public class Polynomial {
     public Polynomial(int[] coefficients) {
         this.coefficients = coefficients;
     }
+
+
 
     /**
      * Розрахунок значення поліному
@@ -63,4 +66,21 @@ public class Polynomial {
         }
         return sb.toString();
     }
+
+    public Polynomial add(Polynomial secondPoly) {
+        return secondPoly;
+    }
+    public Polynomial subtract(Polynomial other) {
+        int maxLength = Math.max(this.coefficients.length, other.coefficients.length);
+        int[] result = new int[maxLength];
+
+        for (int i = 0; i < maxLength; i++) {
+            int a = i < this.coefficients.length ? this.coefficients[i] : 0;
+            int b = i < other.coefficients.length ? other.coefficients[i] : 0;
+            result[i] = a - b;
+        }
+
+        return new Polynomial(result);
+    }
+
 }

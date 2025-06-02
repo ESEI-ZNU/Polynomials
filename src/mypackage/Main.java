@@ -5,7 +5,8 @@ import java.util.Scanner;
 /**
  * Головний клас програми.
  * @author Роботягов Кирило
- * @version 1.0
+ * @author Мелещенко Анжеліка
+ * @version 1.1
  */
 public class Main {
 
@@ -77,6 +78,41 @@ public class Main {
                     System.exit(0);
 
                 }
+
+                case 1 -> {
+                    // Додавання поліномів
+                    System.out.print("Введіть ступінь другого полінома: ");
+                    int degree2 = inputNoun.nextInt();
+                    int[] coefficients2 = new int[degree2 + 1];
+
+                    for (int i = 0; i <= degree2; i++) {
+                        System.out.print("Коефіцієнт при x^" + i + ": ");
+                        coefficients2[i] = inputNoun.nextInt();
+                    }
+
+                    Polynomial secondPoly = new Polynomial(coefficients2);
+                    Polynomial sum = polynom.add(secondPoly);
+
+                    System.out.println("Результат додавання: " + sum);
+                }
+                case 2 -> {
+                    // Введення другого полінома
+                    System.out.print("Введіть ступінь другого полінома: ");
+                    int degree2 = inputNoun.nextInt();
+                    int[] coefficients2 = new int[degree2 + 1];
+
+                    for (int i = 0; i <= degree2; i++) {
+                        System.out.print("Коефіцієнт при x^" + i + ": ");
+                        coefficients2[i] = inputNoun.nextInt();
+                    }
+
+                    Polynomial secondPoly = new Polynomial(coefficients2);
+                    Polynomial difference = polynom.subtract(secondPoly);
+
+                    System.out.println("Результат віднімання: " + difference);
+                }
+
+
             }
         }
     }
