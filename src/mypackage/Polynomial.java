@@ -66,8 +66,45 @@ public class Polynomial {
         }
         return sb.toString();
     }
+    
+ /**
+     * Множення полінома на інший поліном.
+     * @param other інший поліном
+     * @return результат множення
+     */
+    public Polynomial multiply(Polynomial other) {
+        Polynomial result = new Polynomial();
 
+        for (Term thisTerm : this.terms) {
+            // Множимо поліном other на кожен одночлен з this
+            Polynomial temp = other.multiplyByMonomial(thisTerm);
+            // Додаємо до результату
+            result = result.add(temp);
+        }
 
+        return result;
+    }
+
+    /**
+     * Ділення полінома на одночлен.
+     * @param monomial одночлен, на який ділимо
+     * @return результат ділення
+     */
+    public Polynomial divideByMonomial(Term monomial) {
+        Polynomial result = new Polynomial();
+
+        for (Term term : this.terms) {
+            // Ділимо кожен одночлен полінома на заданий одночлен
+            int newCoeff = term.getCoefficient() / monomial.getCoefficient();
+            int newExp = term.getExponent() - monomial.getExponent();
+
+            // Додаємо результат у новий поліном
+            result.addTerm(new Term(newCoeff, newExp));
+        }
+
+        return result;
+    }
+    
     public Polynomial add(Polynomial secondPoly) {
         return secondPoly;
     }
