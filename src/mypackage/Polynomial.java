@@ -67,6 +67,7 @@ public class Polynomial {
         return sb.toString();
     }
 
+
     public Polynomial add(Polynomial secondPoly) {
         return secondPoly;
     }
