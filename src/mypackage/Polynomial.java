@@ -120,5 +120,33 @@ public class Polynomial {
 
         return new Polynomial(result);
     }
+    /**
+     * Множення полінома на одночлен 
+     * @param monoCoeff коефіцієнт одночлена
+     * @param monoDegree степінь одночлена
+     * @return новий поліном
+     */
+    public Polynomial multiplyByMonomial(int monoCoeff, int monoDegree) {
+        int[] result = new int[this.coefficients.length + monoDegree];
+        for (int i = 0; i < this.coefficients.length; i++) {
+            result[i + monoDegree] = this.coefficients[i] * monoCoeff;
+        }
+        return new Polynomial(result);
+    }
+
+    /**
+     * Множення полінома на інший поліном
+     * @param other інший поліном
+     * @return новий поліном
+     */
+    public Polynomial multiply(Polynomial other) {
+        int[] result = new int[this.coefficients.length + other.coefficients.length - 1];
+        for (int i = 0; i < this.coefficients.length; i++) {
+            for (int j = 0; j < other.coefficients.length; j++) {
+                result[i + j] += this.coefficients[i] * other.coefficients[j];
+            }
+        }
+        return new Polynomial(result);
+    }
 
 }
