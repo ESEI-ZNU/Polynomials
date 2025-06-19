@@ -118,8 +118,8 @@ public class Main {
                     System.out.print("Введіть степінь одночлена: ");
                     int monoExp = inputNoun.nextInt();
 
-                    Term monomial = new Term(monoCoef, monoExp);
-                    Polynomial multiplied = polynom.multiplyByMonomial(monomial);
+                    Polynomial multiplied = polynom.multiplyByMonomial(monoCoef, monoExp);
+
 
                     System.out.println("Результат множення на одночлен: " + multiplied);
                 }
