@@ -53,6 +53,7 @@ public class Main {
             System.out.println("1 - Додавання двох поліномів");
             System.out.println("2 - Віднімання двох поліномів");
             System.out.println("3 - Множення поліному на одночлен");
+            System.out.println("4 - Множення двох поліномів (Розробник 2)");
             System.out.println("інакше - Вихід");
 
             /**
@@ -120,7 +121,6 @@ public class Main {
 
                     Polynomial multiplied = polynom.multiplyByMonomial(monoCoef, monoExp);
 
-
                     System.out.println("Результат множення на одночлен: " + multiplied);
                 }
                 case 4 -> {
@@ -148,4 +148,3 @@ public class Main {
         }
     }
 }
-
